@@ -1,78 +1,16 @@
-const navigationItems = [
-  { href: '#menu', label: 'Menu' },
-  { href: '#story', label: 'Story' },
-  { href: '#experience', label: 'Experience' },
-];
-
-const bookingTarget = {
-  href: 'https://reserve.harborandhearth.cafe',
-  navLabel: 'Book online',
-  heroLabel: 'Reserve a table',
-  showcaseLabel: 'See reservation options',
-  sectionLabel: 'Start online reservation',
-  mobileLabel: 'Book now',
-  title: 'Reserve a table online at Harbor and Hearth. Opens in a new tab.',
-};
-
-const highlights = [
-  {
-    title: 'Breakfast through candlelight',
-    description: 'Seasonal brunch, slow coffee, and small plates are framed as one continuous cafe day.',
-  },
-  {
-    title: 'Reservation-first conversion',
-    description: 'Primary calls to action stay visible from the hero to the closing section so booking never feels hidden.',
-  },
-  {
-    title: 'Launch-ready design language',
-    description: 'Warm color tokens, tactile cards, and measured type deliver a polished first impression on any screen.',
-  },
-];
-
-const menuCards = [
-  {
-    title: 'Citrus ricotta toast',
-    detail: 'Whipped ricotta, roasted grapes, pistachio crunch, wildflower honey.',
-    course: 'Brunch signature',
-  },
-  {
-    title: 'Midnight roast flight',
-    detail: 'Espresso, flash-brew tonic, and our signature maple oat cortado.',
-    course: 'Coffee ritual',
-  },
-  {
-    title: 'Harbor supper board',
-    detail: 'Shared cheeses, marinated olives, blistered flatbread, garden crudites.',
-    course: 'Evening table',
-  },
-];
-
-const experienceMoments = [
-  {
-    title: 'Morning light',
-    description: 'Pastry cases, smooth playlists, and fast espresso service keep weekday drop-ins effortless.',
-  },
-  {
-    title: 'Midday reset',
-    description: 'Layered seating supports solo laptop brunches, catch-ups, and low-key client coffees.',
-  },
-  {
-    title: 'Golden hour',
-    description: 'Candlelit tables and small plates shift the mood without changing the brand story.',
-  },
-];
-
-const reservationDetails = [
-  'One configurable booking target now powers the hero, navigation, and closing reservation actions.',
-  'A dedicated reservation card keeps the booking promise visible without breaking the cafe story.',
-  'Mobile guests get a persistent conversion shortcut with the same accessible booking destination.',
-];
-
-const reservationMoments = [
-  { label: 'Best for', value: 'Brunch dates, laptop lunches, golden-hour suppers' },
-  { label: 'Confirmation', value: 'Instant booking window with live party and timing selection' },
-  { label: 'Walk-in backup', value: 'Host stand support stays available for same-day changes' },
-];
+import {
+  aboutMoments,
+  aboutSection,
+  bookingTarget,
+  experienceMoments,
+  highlights,
+  hostStandContact,
+  menuCards,
+  navigationItems,
+  reservationDetails,
+  reservationMoments,
+  visitCards,
+} from './content/cafeContent';
 
 type BookingLinkProps = {
   className: string;
@@ -126,10 +64,10 @@ export default function App() {
               table online.
             </p>
             <div className="hero-actions">
-               <BookingLink className="button button--primary" label={bookingTarget.heroLabel} />
-               <a className="button button--secondary" href="#menu">
-                 Explore the menu
-               </a>
+              <BookingLink className="button button--primary" label={bookingTarget.heroLabel} />
+              <a className="button button--secondary" href="#menu">
+                Explore the menu
+              </a>
             </div>
             <dl className="hero-metrics" aria-label="Cafe highlights">
               <div>
@@ -160,22 +98,22 @@ export default function App() {
                 <strong>Brunch dates, meetings, golden-hour suppers</strong>
                </div>
                <div>
-                 <span>Service window</span>
-                 <strong>8:00 AM - 10:00 PM daily</strong>
-              </div>
-            </div>
-            <BookingLink className="button button--primary" label={bookingTarget.showcaseLabel} />
+                  <span>Service window</span>
+                  <strong>Mon-Thu until 9 PM, Fri-Sat until 10 PM</strong>
+               </div>
+             </div>
+             <BookingLink className="button button--primary" label={bookingTarget.showcaseLabel} />
           </aside>
         </div>
       </header>
 
       <main className="content-grid">
         <section className="panel panel--framed" aria-labelledby="highlights-heading">
-          <div className="section-heading">
-            <span className="eyebrow">Why it converts</span>
-            <h2 id="highlights-heading">A polished first impression built to answer launch-week questions fast.</h2>
-          </div>
-          <div className="card-grid">
+            <div className="section-heading">
+              <span className="eyebrow">Why it converts</span>
+              <h2 id="highlights-heading">A polished first impression built to answer launch-week questions fast.</h2>
+            </div>
+            <div className="card-grid">
             {highlights.map((item) => (
               <article className="card" key={item.title}>
                 <h3>{item.title}</h3>
@@ -189,7 +127,7 @@ export default function App() {
           <article className="panel panel--accent" id="menu" aria-labelledby="menu-heading">
             <div className="section-heading">
               <span className="eyebrow">Signature menu</span>
-              <h2 id="menu-heading">From first espresso to last plate, the menu preview keeps the mood cohesive.</h2>
+              <h2 id="menu-heading">Menu highlights that make the room feel worth reserving.</h2>
             </div>
             <div className="card-grid card-grid--stacked">
               {menuCards.map((item) => (
@@ -204,17 +142,21 @@ export default function App() {
 
           <article className="panel panel--framed">
             <div className="section-heading">
-              <span className="eyebrow">The story</span>
-              <h2>Built for mornings that start slow and evenings that invite one more round.</h2>
+              <span className="eyebrow">Ambience &amp; about</span>
+              <h2 id="story-heading">A neighborhood room designed to feel trustworthy on the first visit.</h2>
             </div>
-            <p>
-              The page architecture keeps the brand promise, menu mood, and reservation intent in
-              one scroll. Each section layers atmosphere with decision-making so launch audiences
-              never hit a dead end before they are ready to book.
-            </p>
+            <p>{aboutSection.intro}</p>
+            <div className="card-grid card-grid--stacked">
+              {aboutMoments.map((item) => (
+                <article className="card" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
             <div className="story-note">
-              <span className="story-note__label">Design system direction</span>
-              <p>Warm neutrals, generous spacing, and card-based composition keep the MVP premium without overbuilding.</p>
+              <span className="story-note__label">{aboutSection.noteLabel}</span>
+              <p>{aboutSection.note}</p>
             </div>
           </article>
         </section>
@@ -222,7 +164,7 @@ export default function App() {
         <section className="panel panel--framed" id="experience">
           <div className="section-heading">
             <span className="eyebrow">In-room experience</span>
-            <h2>Responsive sections carry the same cafe story from narrow screens to wide tables.</h2>
+            <h2>The room shifts smoothly from solo coffee stops to candlelit reservations.</h2>
           </div>
           <div className="card-grid">
             {experienceMoments.map((item) => (
@@ -234,10 +176,40 @@ export default function App() {
           </div>
         </section>
 
+        <section className="panel panel--framed" id="visit" aria-labelledby="visit-heading">
+          <div className="section-heading">
+            <span className="eyebrow">Visit Harbor &amp; Hearth</span>
+            <h2 id="visit-heading">Location, hours, and contact details that remove first-visit friction.</h2>
+          </div>
+          <div className="card-grid">
+            {visitCards.map((item) => (
+              <article className="card card--detail" key={item.title}>
+                <span className="card__eyebrow">{item.eyebrow}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <ul className="feature-list">
+                  {item.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+                {item.links ? (
+                  <div className="link-list">
+                    {item.links.map((link) => (
+                      <a href={link.href} key={link.href}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="panel reservation-panel" id="reservation" aria-labelledby="reservation-heading">
           <div className="section-heading">
             <span className="eyebrow">Online reservations</span>
-            <h2 id="reservation-heading">Give launch-week traffic a clear next step before they bounce.</h2>
+            <h2 id="reservation-heading">Give launch-week traffic one booking target and a confident reason to use it.</h2>
           </div>
           <div className="reservation-panel__layout">
             <div className="reservation-panel__content">
@@ -265,8 +237,8 @@ export default function App() {
               </p>
               <div className="reservation-actions">
                 <BookingLink className="button button--primary" label={bookingTarget.sectionLabel} />
-                <a className="button button--secondary" href="tel:+15550123456">
-                  Call the host stand
+                <a className="button button--secondary" href={hostStandContact.href}>
+                  {hostStandContact.label}
                 </a>
               </div>
               <ul className="feature-list">
