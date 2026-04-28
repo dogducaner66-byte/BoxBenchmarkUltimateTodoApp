@@ -2,8 +2,17 @@ const navigationItems = [
   { href: '#menu', label: 'Menu' },
   { href: '#story', label: 'Story' },
   { href: '#experience', label: 'Experience' },
-  { href: '#reservation', label: 'Reservations' },
 ];
+
+const bookingTarget = {
+  href: 'https://reserve.harborandhearth.cafe',
+  navLabel: 'Book online',
+  heroLabel: 'Reserve a table',
+  showcaseLabel: 'See reservation options',
+  sectionLabel: 'Start online reservation',
+  mobileLabel: 'Book now',
+  title: 'Reserve a table online at Harbor and Hearth. Opens in a new tab.',
+};
 
 const highlights = [
   {
@@ -54,10 +63,36 @@ const experienceMoments = [
 ];
 
 const reservationDetails = [
-  'Online requests are designed to feel obvious on the first visit.',
-  'The booking callout stays readable on mobile without losing atmosphere.',
-  'Future reservation tooling can slot in without rewriting the landing page.',
+  'One configurable booking target now powers the hero, navigation, and closing reservation actions.',
+  'A dedicated reservation card keeps the booking promise visible without breaking the cafe story.',
+  'Mobile guests get a persistent conversion shortcut with the same accessible booking destination.',
 ];
+
+const reservationMoments = [
+  { label: 'Best for', value: 'Brunch dates, laptop lunches, golden-hour suppers' },
+  { label: 'Confirmation', value: 'Instant booking window with live party and timing selection' },
+  { label: 'Walk-in backup', value: 'Host stand support stays available for same-day changes' },
+];
+
+type BookingLinkProps = {
+  className: string;
+  label: string;
+};
+
+function BookingLink({ className, label }: BookingLinkProps) {
+  return (
+    <a
+      className={className}
+      href={bookingTarget.href}
+      rel="noreferrer"
+      target="_blank"
+      title={bookingTarget.title}
+    >
+      {label}
+      <span className="visually-hidden"> Opens the Harbor and Hearth booking page in a new tab.</span>
+    </a>
+  );
+}
 
 export default function App() {
   return (
@@ -74,6 +109,9 @@ export default function App() {
                   <a href={item.href}>{item.label}</a>
                 </li>
               ))}
+              <li className="nav-list__cta">
+                <BookingLink className="button button--primary button--nav" label={bookingTarget.navLabel} />
+              </li>
             </ul>
           </nav>
         </div>
@@ -88,12 +126,10 @@ export default function App() {
               table online.
             </p>
             <div className="hero-actions">
-              <a className="button button--primary" href="#reservation">
-                Reserve a table
-              </a>
-              <a className="button button--secondary" href="#menu">
-                Explore the menu
-              </a>
+               <BookingLink className="button button--primary" label={bookingTarget.heroLabel} />
+               <a className="button button--secondary" href="#menu">
+                 Explore the menu
+               </a>
             </div>
             <dl className="hero-metrics" aria-label="Cafe highlights">
               <div>
@@ -122,15 +158,13 @@ export default function App() {
               <div>
                 <span>Best for</span>
                 <strong>Brunch dates, meetings, golden-hour suppers</strong>
-              </div>
-              <div>
-                <span>Service window</span>
-                <strong>8:00 AM - 10:00 PM daily</strong>
+               </div>
+               <div>
+                 <span>Service window</span>
+                 <strong>8:00 AM - 10:00 PM daily</strong>
               </div>
             </div>
-            <a className="button button--primary" href="#reservation">
-              See reservation options
-            </a>
+            <BookingLink className="button button--primary" label={bookingTarget.showcaseLabel} />
           </aside>
         </div>
       </header>
@@ -206,29 +240,51 @@ export default function App() {
             <h2 id="reservation-heading">Give launch-week traffic a clear next step before they bounce.</h2>
           </div>
           <div className="reservation-panel__layout">
-            <div>
+            <div className="reservation-panel__content">
               <p>
-                Reserve for brunch, coffee dates, or supper service with a lightweight online
-                booking flow. This callout is intentionally ready for a real reservation
-                integration in the next iteration.
+                Reserve for brunch, coffee dates, or supper service with one consistent online
+                booking destination. Every primary reservation prompt now lands on the same live
+                target, which keeps first-launch traffic oriented and makes future booking updates
+                a one-line configuration change.
+              </p>
+              <div className="reservation-moment-grid" aria-label="Reservation highlights">
+                {reservationMoments.map((item) => (
+                  <article className="reservation-moment" key={item.label}>
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                  </article>
+                ))}
+              </div>
+            </div>
+            <aside className="reservation-card" aria-label="Reservation booking">
+              <span className="story-note__label">Reservation-first CTA</span>
+              <h3>Keep the booking path obvious on every screen.</h3>
+              <p>
+                The navigation, hero, and final section all point to the same booking target so
+                guests never have to guess where to go next.
               </p>
               <div className="reservation-actions">
-                <a className="button button--primary" href="mailto:reservations@harborandhearth.cafe">
-                  Start reservation request
-                </a>
+                <BookingLink className="button button--primary" label={bookingTarget.sectionLabel} />
                 <a className="button button--secondary" href="tel:+15550123456">
                   Call the host stand
                 </a>
               </div>
-            </div>
-            <ul className="feature-list">
-              {reservationDetails.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+              <ul className="feature-list">
+                {reservationDetails.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </aside>
           </div>
         </section>
       </main>
+      <div className="mobile-booking-bar" aria-label="Quick reservation access">
+        <div>
+          <span className="mobile-booking-bar__eyebrow">Reserve tonight</span>
+          <p>Keep the booking flow one tap away on mobile.</p>
+        </div>
+        <BookingLink className="button button--primary button--compact" label={bookingTarget.mobileLabel} />
+      </div>
     </div>
   );
 }
