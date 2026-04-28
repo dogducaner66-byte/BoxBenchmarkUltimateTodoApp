@@ -6,6 +6,7 @@ describe('cafe landing page shell', () => {
   it('renders the polished cafe story, reservation-first navigation, and launch sections', () => {
     render(React.createElement(App));
     const bookingTarget = 'https://reserve.harborandhearth.cafe';
+    const hostStandHref = 'tel:+15550102456';
 
     expect(
       screen.getByRole('heading', {
@@ -20,9 +21,13 @@ describe('cafe landing page shell', () => {
       'href',
       '#menu',
     );
-    expect(within(primaryNavigation).getByRole('link', { name: /story/i })).toHaveAttribute(
+    expect(within(primaryNavigation).getByRole('link', { name: /about/i })).toHaveAttribute(
       'href',
       '#story',
+    );
+    expect(within(primaryNavigation).getByRole('link', { name: /visit/i })).toHaveAttribute(
+      'href',
+      '#visit',
     );
     expect(within(primaryNavigation).getByRole('link', { name: /experience/i })).toHaveAttribute(
       'href',
@@ -60,11 +65,39 @@ describe('cafe landing page shell', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: /responsive sections carry the same cafe story from narrow screens to wide tables/i,
+        name: /the room shifts smoothly from solo coffee stops to candlelit reservations/i,
       }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { name: /give launch-week traffic a clear next step/i }),
+      screen.getByRole('heading', {
+        name: /location, hours, and contact details that remove first-visit friction/i,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/22 Harbor Lane, Seabrook, CA 90210/i)).toBeInTheDocument();
+    expect(screen.getByText(/Fri-Sat \| 8:00 AM - 10:00 PM/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /open walking directions/i })).toHaveAttribute(
+      'href',
+      'https://maps.google.com/?q=22+Harbor+Lane+Seabrook+CA+90210',
+    );
+    expect(screen.getByRole('link', { name: /call \(555\) 010-2456/i })).toHaveAttribute(
+      'href',
+      hostStandHref,
+    );
+    expect(screen.getByRole('link', { name: /email the cafe team/i })).toHaveAttribute(
+      'href',
+      'mailto:hello@harborandhearth.cafe',
+    );
+    expect(
+      screen.getByRole('heading', { name: /menu highlights that make the room feel worth reserving/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /a neighborhood room designed to feel trustworthy on the first visit/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /give launch-week traffic one booking target/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /give launch-week traffic one booking target and a confident reason to use it/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /start online reservation/i })).toHaveAttribute(
       'href',
@@ -76,7 +109,7 @@ describe('cafe landing page shell', () => {
     );
     expect(screen.getByRole('link', { name: /call the host stand/i })).toHaveAttribute(
       'href',
-      'tel:+15550123456',
+      hostStandHref,
     );
   });
 });
