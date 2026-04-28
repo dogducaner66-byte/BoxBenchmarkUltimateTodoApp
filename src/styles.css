@@ -168,6 +168,20 @@ a:hover {
     rgba(17, 10, 9, 0.74);
 }
 
+.showcase-card__media {
+  overflow: hidden;
+  border-radius: calc(var(--radius-md) - 2px);
+  aspect-ratio: 4 / 3;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.showcase-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .showcase-card__label,
 .card__eyebrow,
 .story-note__label {
@@ -361,13 +375,42 @@ dd {
 }
 
 .card--detail,
-.link-list {
+.link-list,
+.media-grid,
+.media-card,
+.media-card figcaption {
   display: grid;
 }
 
 .card--detail {
   gap: var(--space-sm);
   align-content: start;
+}
+
+.media-grid {
+  gap: var(--space-md);
+}
+
+.media-card {
+  overflow: hidden;
+  gap: var(--space-sm);
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.media-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.media-card figcaption {
+  gap: 0.6rem;
+  padding: 0 1.25rem 1.25rem;
 }
 
 .story-note {
@@ -511,6 +554,10 @@ dd {
   .card-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .card-grid--stacked {

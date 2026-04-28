@@ -15,6 +15,36 @@ export const bookingTarget = {
   title: 'Reserve a table online at Harbor and Hearth. Opens in a new tab.',
 };
 
+export const heroMedia = {
+  mobileSrc: '/hero-scene-mobile.svg',
+  desktopSrc: '/hero-scene-desktop.svg',
+  alt: 'Sunlit Harbor and Hearth table with citrus toast, coffee service, and warm window light.',
+  width: 1280,
+  height: 960,
+  sizes: '(min-width: 1024px) 28rem, (min-width: 720px) 34vw, 100vw',
+};
+
+export const galleryMedia = [
+  {
+    src: '/gallery-pastry.svg',
+    alt: 'House pastry display with espresso cups and a linen-lined service counter.',
+    eyebrow: 'Launch-day detail',
+    title: 'Pastry counter confidence',
+    description: 'Deferred imagery supports the menu story without competing with the primary reservation path.',
+    width: 960,
+    height: 720,
+  },
+  {
+    src: '/gallery-dining.svg',
+    alt: 'Evening dining room with candlelit tables, layered seating, and guests settling into supper service.',
+    eyebrow: 'Evening atmosphere',
+    title: 'Room feel after dark',
+    description: 'Lazy-loaded ambience visuals help guests picture brunch and supper service while keeping first paint focused.',
+    width: 960,
+    height: 720,
+  },
+];
+
 export const hostStandContact = {
   href: 'tel:+15550102456',
   label: 'Call the host stand',

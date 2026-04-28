@@ -99,6 +99,31 @@ describe('cafe landing page shell', () => {
     expect(
       screen.getByRole('heading', { name: /give launch-week traffic one booking target and a confident reason to use it/i }),
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', {
+        name: /sunlit harbor and hearth table with citrus toast, coffee service, and warm window light/i,
+      }),
+    ).toHaveAttribute('loading', 'eager');
+    expect(
+      screen.getByRole('img', {
+        name: /sunlit harbor and hearth table with citrus toast, coffee service, and warm window light/i,
+      }),
+    ).toHaveAttribute('fetchpriority', 'high');
+    expect(
+      screen.getByRole('heading', {
+        name: /photo-ready details that load after the booking decision stays visible/i,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', {
+        name: /house pastry display with espresso cups and a linen-lined service counter/i,
+      }),
+    ).toHaveAttribute('loading', 'lazy');
+    expect(
+      screen.getByRole('img', {
+        name: /evening dining room with candlelit tables, layered seating, and guests settling into supper service/i,
+      }),
+    ).toHaveAttribute('loading', 'lazy');
     expect(screen.getByRole('link', { name: /start online reservation/i })).toHaveAttribute(
       'href',
       bookingTarget,
