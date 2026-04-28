@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" role="img" aria-labelledby="title desc">
+  <title id="title">Harbor and Hearth hero scene mobile</title>
+  <desc id="desc">Illustrated cafe table with toast, coffee, flowers, and warm window light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f7dcc4"/>
+      <stop offset="55%" stop-color="#d68b5f"/>
+      <stop offset="100%" stop-color="#43211a"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#4a261e"/>
+      <stop offset="100%" stop-color="#1b0f0d"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="900" fill="url(#bg)"/>
+  <circle cx="620" cy="140" r="180" fill="#fff2df" opacity=".26"/>
+  <rect x="0" y="510" width="720" height="390" fill="url(#table)"/>
+  <rect x="90" y="562" width="540" height="210" rx="36" fill="#6b382b" opacity=".88"/>
+  <ellipse cx="300" cy="676" rx="138" ry="94" fill="#f3eadf"/>
+  <ellipse cx="300" cy="676" rx="118" ry="76" fill="#f6c98b"/>
+  <path d="M222 676c54-52 105-52 156 0-54 50-105 50-156 0Z" fill="#ea8d52"/>
+  <path d="M246 638h108l18 26-18 26H246l-18-26 18-26Z" fill="#fff7ef"/>
+  <rect x="390" y="600" width="122" height="122" rx="61" fill="#fbf4ec"/>
+  <circle cx="451" cy="661" r="43" fill="#4b2a20"/>
+  <rect x="500" y="640" width="40" height="16" rx="8" fill="#fbf4ec"/>
+  <path d="M518 636c-6-18-2-38 10-54" fill="none" stroke="#fbf4ec" stroke-linecap="round" stroke-width="8"/>
+  <path d="M114 430c110 32 182 28 252-26 66-52 150-63 248-38v136H114Z" fill="#ffffff" opacity=".1"/>
+  <path d="M130 520c72-74 132-108 184-104 62 4 111 56 174 58 44 2 94-18 152-58v120H130Z" fill="#ffffff" opacity=".12"/>
+  <rect x="152" y="240" width="58" height="208" rx="29" fill="#7f4c3f"/>
+  <circle cx="181" cy="206" r="48" fill="#f4cfb3"/>
+  <path d="M181 162c36 38 50 82 40 134-42-20-78-12-108 24 6-76 30-129 68-158Z" fill="#6f8f5e"/>
+  <path d="M181 174c-18 40-16 80 6 120 18-30 26-66 24-110-12-10-22-14-30-10Z" fill="#8bb16b"/>
+</svg>

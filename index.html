@@ -2,15 +2,100 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Harbor & Hearth is a modern neighborhood cafe for all-day brunch, small plates, and easy online reservations."
+      content="Harbor & Hearth is a waterfront neighborhood cafe in Seabrook serving brunch, coffee, and small plates with easy online reservations."
     />
-    <title>Harbor & Hearth Cafe</title>
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#2c1b16" />
+    <meta
+      name="keywords"
+      content="Seabrook cafe, waterfront brunch, coffee shop reservations, Harbor and Hearth"
+    />
+    <link rel="canonical" href="https://harborandhearth.cafe/" />
+    <link rel="preload" as="image" href="/hero-scene-mobile.svg" media="(max-width: 719px)" />
+    <link rel="preload" as="image" href="/hero-scene-desktop.svg" media="(min-width: 720px)" />
+
+    <meta property="og:site_name" content="Harbor & Hearth" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Harbor & Hearth Cafe | Waterfront brunch, coffee, and reservations"
+    />
+    <meta
+      property="og:description"
+      content="Plan brunch, coffee meetings, and candlelit supper at Harbor & Hearth with one clear online reservation path."
+    />
+    <meta property="og:url" content="https://harborandhearth.cafe/" />
+    <meta property="og:image" content="https://harborandhearth.cafe/social-preview.svg" />
+    <meta
+      property="og:image:alt"
+      content="Harbor & Hearth cafe preview with warm typography and a reservation-first message."
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Harbor & Hearth Cafe | Waterfront brunch, coffee, and reservations"
+    />
+    <meta
+      name="twitter:description"
+      content="Neighborhood cafe energy, polished launch-week details, and an obvious online reservation CTA."
+    />
+    <meta name="twitter:image" content="https://harborandhearth.cafe/social-preview.svg" />
+
+    <title>Harbor & Hearth Cafe | Waterfront brunch and reservations</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["CafeOrCoffeeShop", "LocalBusiness"],
+        "name": "Harbor & Hearth",
+        "description": "Waterfront neighborhood cafe serving brunch, coffee, and small plates with online reservations.",
+        "url": "https://harborandhearth.cafe/",
+        "image": "https://harborandhearth.cafe/social-preview.svg",
+        "telephone": "+1-555-010-2456",
+        "email": "hello@harborandhearth.cafe",
+        "priceRange": "$$",
+        "servesCuisine": ["Cafe", "Brunch", "Coffee", "Small Plates"],
+        "acceptsReservations": true,
+        "menu": "https://harborandhearth.cafe/#menu",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "22 Harbor Lane",
+          "addressLocality": "Seabrook",
+          "addressRegion": "CA",
+          "postalCode": "90210",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 34.0195,
+          "longitude": -118.4912
+        },
+        "hasMap": "https://maps.google.com/?q=22+Harbor+Lane+Seabrook+CA+90210",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "08:00",
+            "closes": "21:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Friday", "Saturday"],
+            "opens": "08:00",
+            "closes": "22:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "08:00",
+            "closes": "20:00"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

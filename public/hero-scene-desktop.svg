@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 960" role="img" aria-labelledby="title desc">
+  <title id="title">Harbor and Hearth hero scene desktop</title>
+  <desc id="desc">Wide illustrated cafe scene with reservation-ready table, coffee, toast, and soft window light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8ddc5"/>
+      <stop offset="45%" stop-color="#d78658"/>
+      <stop offset="100%" stop-color="#311512"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#5a2f25"/>
+      <stop offset="100%" stop-color="#190f0d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="960" fill="url(#bg)"/>
+  <circle cx="1090" cy="160" r="220" fill="#fff3df" opacity=".24"/>
+  <rect y="546" width="1280" height="414" fill="url(#table)"/>
+  <path d="M74 536c176-156 326-230 450-224 152 8 270 122 424 126 102 4 214-44 332-140v238H74Z" fill="#ffffff" opacity=".13"/>
+  <path d="M148 410c182 56 312 52 446-38 128-84 292-102 530-52v172H148Z" fill="#ffffff" opacity=".08"/>
+  <rect x="242" y="624" width="792" height="216" rx="44" fill="#6a382b" opacity=".9"/>
+  <ellipse cx="546" cy="732" rx="196" ry="122" fill="#f2e6da"/>
+  <ellipse cx="546" cy="732" rx="168" ry="96" fill="#f6c98c"/>
+  <path d="M444 732c72-64 140-64 204 0-70 58-138 58-204 0Z" fill="#ea8d52"/>
+  <path d="M478 680h138l26 34-26 34H478l-24-34 24-34Z" fill="#fff7ef"/>
+  <rect x="770" y="642" width="162" height="162" rx="81" fill="#fbf4ec"/>
+  <circle cx="851" cy="723" r="58" fill="#4b2a20"/>
+  <rect x="914" y="694" width="58" height="22" rx="11" fill="#fbf4ec"/>
+  <path d="M944 688c-10-26-4-54 16-78" fill="none" stroke="#fbf4ec" stroke-linecap="round" stroke-width="10"/>
+  <rect x="182" y="232" width="76" height="272" rx="38" fill="#7f4c3f"/>
+  <circle cx="220" cy="188" r="60" fill="#f4cfb3"/>
+  <path d="M220 134c46 48 64 110 50 180-56-28-104-18-146 34 8-102 40-174 96-214Z" fill="#6f8f5e"/>
+  <path d="M220 148c-24 54-20 108 10 162 24-42 34-92 30-150-16-14-30-18-40-12Z" fill="#8bb16b"/>
+  <rect x="1020" y="282" width="120" height="180" rx="30" fill="#e8a67a" opacity=".3"/>
+  <rect x="1060" y="324" width="40" height="96" rx="20" fill="#fff1df" opacity=".7"/>
+</svg>

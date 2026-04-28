@@ -3,6 +3,8 @@ import {
   aboutSection,
   bookingTarget,
   experienceMoments,
+  galleryMedia,
+  heroMedia,
   highlights,
   hostStandContact,
   menuCards,
@@ -86,6 +88,19 @@ export default function App() {
           </div>
 
           <aside className="showcase-card" aria-label="Reservation spotlight">
+            <picture className="showcase-card__media">
+              <source media="(min-width: 720px)" srcSet={heroMedia.desktopSrc} />
+              <img
+                alt={heroMedia.alt}
+                decoding="async"
+                fetchPriority="high"
+                height={heroMedia.height}
+                loading="eager"
+                sizes={heroMedia.sizes}
+                src={heroMedia.mobileSrc}
+                width={heroMedia.width}
+              />
+            </picture>
             <span className="showcase-card__label">Tonight at Harbor &amp; Hearth</span>
             <h2>Reserve a candlelit corner, brunch banquette, or quick coffee table.</h2>
             <p>
@@ -159,6 +174,33 @@ export default function App() {
               <p>{aboutSection.note}</p>
             </div>
           </article>
+        </section>
+
+        <section className="panel panel--framed" aria-labelledby="gallery-heading">
+          <div className="section-heading">
+            <span className="eyebrow">Responsive imagery</span>
+            <h2 id="gallery-heading">Photo-ready details that load after the booking decision stays visible.</h2>
+          </div>
+          <div className="media-grid">
+            {galleryMedia.map((item) => (
+              <figure className="media-card" key={item.title}>
+                <img
+                  alt={item.alt}
+                  decoding="async"
+                  fetchPriority="low"
+                  height={item.height}
+                  loading="lazy"
+                  src={item.src}
+                  width={item.width}
+                />
+                <figcaption>
+                  <span className="card__eyebrow">{item.eyebrow}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </section>
 
         <section className="panel panel--framed" id="experience">
