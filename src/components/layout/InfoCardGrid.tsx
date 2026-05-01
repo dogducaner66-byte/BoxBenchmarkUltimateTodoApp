@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { CommerceCard } from '../../content/cafeContent';
 
 type InfoCardGridProps = {
@@ -27,16 +28,17 @@ export function InfoCardGrid({
           ) : null}
           {item.links?.length ? (
             <div className="link-list">
-              {item.links.map((link) => (
-                <a
-                  href={link.href}
-                  key={link.href}
-                  rel={link.external ? 'noreferrer' : undefined}
-                  target={link.external ? '_blank' : undefined}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {item.links.map((link) =>
+                link.external ? (
+                  <a href={link.href} key={link.href} rel="noreferrer" target="_blank">
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link key={link.href} to={link.href}>
+                    {link.label}
+                  </Link>
+                ),
+              )}
             </div>
           ) : null}
         </article>

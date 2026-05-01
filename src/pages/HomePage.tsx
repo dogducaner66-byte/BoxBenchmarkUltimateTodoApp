@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
-import { BookingLink } from '../components/BookingLink';
+import { EditorialMediaGrid } from '../components/layout/EditorialMediaGrid';
 import { ContentSection } from '../components/layout/ContentSection';
 import { InfoCardGrid } from '../components/layout/InfoCardGrid';
 import { PageHero } from '../components/layout/PageHero';
 import {
-  bookingTarget,
-  collectionCards,
+  categoryCards,
+  featuredProductSlug,
   heroMedia,
+  homeEditorialMedia,
   homeHero,
   homeMetrics,
-  reservationBenefits,
-  reservationDetails,
-  serviceCards,
+  primaryAction,
+  shoppingBenefits,
   storefrontHighlights,
 } from '../content/cafeContent';
 
@@ -21,26 +21,18 @@ export function HomePage() {
       <PageHero
         actions={
           <>
-            <BookingLink className="button button--primary" label={bookingTarget.heroLabel} />
-            <Link className="button button--secondary" to={homeHero.secondaryHref}>
+            <Link className="button button--primary" title={primaryAction.title} to={primaryAction.to}>
+              {primaryAction.heroLabel}
+            </Link>
+            <Link className="button button--secondary" to={`/urun/${featuredProductSlug}`}>
               {homeHero.secondaryLabel}
             </Link>
           </>
         }
         aside={
-          <aside className="showcase-card" aria-label="Gunluk vitrin">
+          <aside className="showcase-card" aria-label="One cikan urun sahnesi">
             <picture className="showcase-card__media">
-              <source media="(min-width: 720px)" srcSet={heroMedia.desktopSrc} />
-              <img
-                alt={heroMedia.alt}
-                decoding="async"
-                fetchPriority="high"
-                height={heroMedia.height}
-                loading="eager"
-                sizes={heroMedia.sizes}
-                src={heroMedia.mobileSrc}
-                width={heroMedia.width}
-              />
+              <img alt={heroMedia.alt} decoding="async" fetchPriority="high" loading="eager" src={heroMedia.src} />
             </picture>
             <span className="showcase-card__label">{homeHero.showcaseLabel}</span>
             <h2>{homeHero.showcaseTitle}</h2>
@@ -53,7 +45,9 @@ export function HomePage() {
                 </div>
               ))}
             </div>
-            <BookingLink className="button button--primary" label={bookingTarget.showcaseLabel} />
+            <Link className="button button--primary" to={`/urun/${featuredProductSlug}`}>
+              Urun detayini ac
+            </Link>
           </aside>
         }
         description={homeHero.description}
@@ -71,54 +65,40 @@ export function HomePage() {
       </PageHero>
 
       <ContentSection
-        eyebrow="Neden bu kurgu"
+        eyebrow="Neden bu storefront"
         id="storefront-highlights"
-        title="Turkce rota yapisi cafe vitrini ile operasyon akisini ayni yerde tutuyor."
+        title="Premium outdoor retail deneyimi kategori, urun ve destek rotalarinda ayni netlikle ilerliyor."
       >
         <InfoCardGrid items={storefrontHighlights} />
       </ContentSection>
 
       <ContentSection
         accent
-        description="Farkli satin alma niyetleri tek landing sayfada carpismaz; her hizmet bicimi kendi kartlariyla okunur."
-        eyebrow="Servis katmanlari"
-        id="service-modes"
-        title="Masada servis, al-gotur ve raf urunleri ayni marka diliyle ayrisiyor."
+        description="Kategori listing yalnizca urun cinsi gostermiyor; saha senaryosu, malzeme hissi ve sepete giris nedeni ayni kartta anlatiliyor."
+        eyebrow="Kategori vitrini"
+        id="category-preview"
+        title="Outdoor kategorileri fiyat duygusunu destekleyen metin ve detay bloklariyla sunuluyor."
       >
-        <InfoCardGrid items={serviceCards} />
+        <InfoCardGrid items={categoryCards} />
       </ContentSection>
 
       <ContentSection
-        description="Magaza deneyimi sadece masada bitmiyor; kasa ve raf tarafinda ek gelir yaratan urunler de acikca listeleniyor."
-        eyebrow="Yapisal commerce icerigi"
-        id="collections"
-        title="Gunun vitrini ve raf secimi, tekrar kullanilabilir kartlar halinde saklaniyor."
+        description="Gercek fotograf kullanan moduler bolumler; hero, kategori ve operasyon sayfalarinda ayni premium algiyi koruyor."
+        eyebrow="Foto-ready bloklar"
+        id="editorial-grid"
+        title="Her rota, merch hissini tasiyan editorial karelerle besleniyor."
       >
-        <InfoCardGrid items={collectionCards} />
+        <EditorialMediaGrid items={homeEditorialMedia} />
       </ContentSection>
 
       <ContentSection
-        description="Rezervasyon rotasina gitmeden once bile ziyaretci ayni operasyon mantigini anlar."
-        eyebrow="Rezervasyon zemini"
-        id="reservation-foundation"
-        title="Tek rezervasyon hedefi hem kullanici hem ekip icin daha temiz bir akisa donusur."
+        accent
+        description="Guven notlari landing bolumlerinde gorunur oldugu icin ziyaretci urun detayina daha hazir ilerliyor."
+        eyebrow="Satin alma zemini"
+        id="shopping-benefits"
+        title="Hizli teslimat, showroom destegi ve tek amiral urun hikayesi guveni yukseltiyor."
       >
-        <div className="split-layout">
-          <InfoCardGrid items={reservationBenefits} />
-          <aside className="reservation-card" aria-label="Rezervasyon notlari">
-            <span className="story-note__label">CTA standartlari</span>
-            <h3>Butonlar rota degisse de ayni aksiyona gider.</h3>
-            <p>
-              Header, mobil bar, anasayfa ve rezervasyon rotasi tek rezervasyon hedefini kullandigi
-              icin ileride saglayici degisse bile davranis tum storefront boyunca korunur.
-            </p>
-            <ul className="feature-list">
-              {reservationDetails.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </aside>
-        </div>
+        <InfoCardGrid items={shoppingBenefits} />
       </ContentSection>
     </>
   );

@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { BookingLink } from '../BookingLink';
-import { bookingTarget, brand, footerColumns, navigationItems } from '../../content/cafeContent';
+import { brand, footerColumns, navigationItems, primaryAction } from '../../content/cafeContent';
 
 export function StorefrontLayout() {
   return (
@@ -24,13 +23,15 @@ export function StorefrontLayout() {
                   </li>
                 ))}
                 <li className="nav-list__cta">
-                  <BookingLink className="button button--primary button--nav" label={bookingTarget.navLabel} />
+                  <NavLink className="button button--primary button--nav" title={primaryAction.title} to={primaryAction.to}>
+                    {primaryAction.navLabel}
+                  </NavLink>
                 </li>
               </ul>
             </nav>
           </div>
           <div className="site-header__meta">
-            <span className="eyebrow">Storefront foundation</span>
+            <span className="eyebrow">Outdoor storefront system</span>
             <p>{brand.notice}</p>
           </div>
         </div>
@@ -43,8 +44,8 @@ export function StorefrontLayout() {
       <footer className="page-shell">
         <section className="panel panel--framed footer-shell" aria-label="Storefront summary">
           <div className="section-heading">
-            <span className="eyebrow">Operasyon ozeti</span>
-            <h2>Harbor &amp; Hearth storefront omurgasi yeni rotalara hazir.</h2>
+            <span className="eyebrow">Storefront ozeti</span>
+            <h2>Kuzey Patika storefront omurgasi premium outdoor perakende icin hazir.</h2>
           </div>
           <div className="card-grid">
             {footerColumns.map((column) => (
@@ -61,12 +62,14 @@ export function StorefrontLayout() {
         </section>
       </footer>
 
-      <div className="mobile-booking-bar" aria-label="Hizli rezervasyon">
+      <div className="mobile-booking-bar" aria-label="Hizli koleksiyon gecisi">
         <div>
-          <span className="mobile-booking-bar__eyebrow">Ayni rezervasyon hedefi</span>
-          <p>Masa ayirma akisini tum rotalarda tek dokunusla koruyun.</p>
+          <span className="mobile-booking-bar__eyebrow">Tek CTA omurgasi</span>
+          <p>Kategori vitrini tum sayfalarda ayni ana aksiyon olarak korunur.</p>
         </div>
-        <BookingLink className="button button--primary button--compact" label={bookingTarget.mobileLabel} />
+        <NavLink className="button button--primary button--compact" title={primaryAction.title} to={primaryAction.to}>
+          {primaryAction.mobileLabel}
+        </NavLink>
       </div>
     </div>
   );

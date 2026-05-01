@@ -3,11 +3,11 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 export const buildSmokeTokens = [
-  'Kadikoy sahilinde kahve, kahvalti ve raf urunleri tek route omurgasinda.',
-  'Turkce rota yapisi cafe vitrini ile operasyon akisini ayni yerde tutuyor.',
-  'Tek rezervasyon hedefi hem kullanici hem ekip icin daha temiz bir akisa donusur.',
-  'Masa ayirt',
-  'https://reserve.harborandhearth.cafe',
+  'Dort mevsim saha kullanimi icin tasarlanan premium outdoor katmanlar.',
+  'Premium outdoor retail deneyimi kategori, urun ve destek rotalarinda ayni netlikle ilerliyor.',
+  'Zirve Shell Ceket',
+  'Koleksiyonu kesfet',
+  '/kategoriler',
 ];
 
 function readRequiredFile(filePath) {

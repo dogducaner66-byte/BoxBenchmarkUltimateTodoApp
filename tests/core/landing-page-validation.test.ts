@@ -5,11 +5,10 @@ import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../../src/App';
-import { bookingTarget } from '../../src/content/cafeContent';
 import { buildSmokeTokens, validateLandingPageBuild } from '../../scripts/verifyLandingPageBuild.mjs';
 
 describe('landing page build and smoke validation', () => {
-  it('renders the storefront home route with a consistent reservation CTA', () => {
+  it('renders the outdoor storefront home route with a consistent collection CTA', () => {
     render(
       React.createElement(
         MemoryRouter,
@@ -20,32 +19,32 @@ describe('landing page build and smoke validation', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: /turkce rota yapisi cafe vitrini ile operasyon akisini ayni yerde tutuyor/i,
+        name: /premium outdoor retail deneyimi kategori, urun ve destek rotalarinda ayni netlikle ilerliyor/i,
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: /gunun vitrini ve raf secimi, tekrar kullanilabilir kartlar halinde saklaniyor/i,
+        name: /outdoor kategorileri fiyat duygusunu destekleyen metin ve detay bloklariyla sunuluyor/i,
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: /tek rezervasyon hedefi hem kullanici hem ekip icin daha temiz bir akisa donusur/i,
+        name: /hizli teslimat, showroom destegi ve tek amiral urun hikayesi guveni yukseltiyor/i,
       }),
     ).toBeInTheDocument();
 
     const primaryNavigation = screen.getByRole('navigation', { name: /birincil/i });
-    expect(within(primaryNavigation).getByRole('link', { name: /masa ayirt/i })).toHaveAttribute(
+    expect(within(primaryNavigation).getByRole('link', { name: /koleksiyonu kesfet/i })).toHaveAttribute(
       'href',
-      bookingTarget.href,
+      '/kategoriler',
     );
-    expect(screen.getByRole('link', { name: /rezervasyon baslat/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /yeni sezonu kesfet/i })).toHaveAttribute(
       'href',
-      bookingTarget.href,
+      '/kategoriler',
     );
-    expect(screen.getAllByRole('link', { name: /masa ayirt/i })[0]).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /urun detayini ac/i })).toHaveAttribute(
       'href',
-      bookingTarget.href,
+      '/urun/zirve-shell-ceket',
     );
   });
 
@@ -55,7 +54,7 @@ describe('landing page build and smoke validation', () => {
     });
   });
 
-  it('fails clearly when the built reservation CTA contract is missing', () => {
+  it('fails clearly when the built primary CTA contract is missing', () => {
     const tempRoot = mkdtempSync(path.join(os.tmpdir(), 'landing-page-build-validation-'));
     const distDirectory = path.join(tempRoot, 'dist');
     const assetsDirectory = path.join(distDirectory, 'assets');
@@ -86,7 +85,7 @@ describe('landing page build and smoke validation', () => {
       );
       writeFileSync(
         path.join(assetsDirectory, 'index-test.css'),
-        '.mobile-booking-bar{display:flex;}',
+        '.mobile-booking-bar{display:grid;}',
         'utf8',
       );
 
