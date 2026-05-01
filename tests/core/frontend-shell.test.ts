@@ -13,14 +13,13 @@ function renderApp(initialEntries: string[] = ['/']) {
   );
 }
 
-describe('cafe storefront shell', () => {
-  it('renders the Turkish storefront home route with internal navigation and a shared reservation CTA', () => {
+describe('outdoor storefront shell', () => {
+  it('renders the home route with premium outdoor navigation, hero media, and primary CTA', () => {
     renderApp();
-    const bookingHref = 'https://reserve.harborandhearth.cafe';
 
     expect(
       screen.getByRole('heading', {
-        name: /kadikoy sahilinde kahve, kahvalti ve raf urunleri tek route omurgasinda/i,
+        name: /dort mevsim saha kullanimi icin tasarlanan premium outdoor katmanlar/i,
       }),
     ).toBeInTheDocument();
 
@@ -31,133 +30,130 @@ describe('cafe storefront shell', () => {
       'href',
       '/',
     );
-    expect(within(primaryNavigation).getByRole('link', { name: /^menu$/i })).toHaveAttribute(
+    expect(within(primaryNavigation).getByRole('link', { name: /kategoriler/i })).toHaveAttribute(
       'href',
-      '/menu',
+      '/kategoriler',
     );
-    expect(within(primaryNavigation).getByRole('link', { name: /^rezervasyon$/i })).toHaveAttribute(
+    expect(within(primaryNavigation).getByRole('link', { name: /hakkimizda/i })).toHaveAttribute(
       'href',
-      '/rezervasyon',
+      '/hakkimizda',
     );
-    expect(within(primaryNavigation).getByRole('link', { name: /ziyaret/i })).toHaveAttribute(
+    expect(within(primaryNavigation).getByRole('link', { name: /iletisim/i })).toHaveAttribute(
       'href',
-      '/ziyaret',
-    );
-    expect(within(primaryNavigation).getByRole('link', { name: /masa ayirt/i })).toHaveAttribute(
-      'href',
-      bookingHref,
-    );
-    expect(within(primaryNavigation).getByRole('link', { name: /masa ayirt/i })).toHaveAttribute(
-      'target',
-      '_blank',
-    );
-    expect(screen.getByRole('link', { name: /rezervasyon baslat/i })).toHaveAttribute(
-      'href',
-      bookingHref,
-    );
-    expect(screen.getByRole('link', { name: /rezervasyon baslat/i })).toHaveAttribute(
-      'title',
-      'Harbor & Hearth rezervasyon akisini yeni sekmede acar.',
+      '/iletisim',
     );
     expect(
-      screen.getByRole('heading', {
-        name: /sabah kahvaltisindan aksam rezervasyonuna kadar ayni sakin ritim/i,
-      }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /aksam servisini gor/i })).toHaveAttribute(
+      within(primaryNavigation).getByRole('link', { name: /teslimat & iade/i }),
+    ).toHaveAttribute('href', '/teslimat-iade');
+    expect(
+      within(primaryNavigation).getByRole('link', { name: /koleksiyonu kesfet/i }),
+    ).toHaveAttribute('href', '/kategoriler');
+    expect(screen.getByRole('link', { name: /yeni sezonu kesfet/i })).toHaveAttribute(
       'href',
-      bookingHref,
+      '/kategoriler',
     );
-    expect(
-      screen.getByRole('heading', {
-        name: /turkce rota yapisi cafe vitrini ile operasyon akisini ayni yerde tutuyor/i,
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('heading', {
-        name: /gunun vitrini ve raf secimi, tekrar kullanilabilir kartlar halinde saklaniyor/i,
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('heading', {
-        name: /tek rezervasyon hedefi hem kullanici hem ekip icin daha temiz bir akisa donusur/i,
-      }),
-    ).toBeInTheDocument();
-    expect(screen.getByText(/paket kahve ve ev urunlerine tasiniyor/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /menuyu incele/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /zirve shell ceketi incele/i })).toHaveAttribute(
       'href',
-      '/menu',
+      '/urun/zirve-shell-ceket',
     );
-    expect(
-      screen.getByText(/masa ayirma akisini tum rotalarda tek dokunusla koruyun/i),
-    ).toBeInTheDocument();
     expect(
       screen.getByRole('img', {
-        name: /harbor and hearth masasinda kahvalti tabagi, kahve servisi ve sabah isigi/i,
+        name: /yuksek rakimda teknik katmanlariyla yuruyen outdoor ekip/i,
       }),
     ).toHaveAttribute('loading', 'eager');
+    expect(
+      screen.getByRole('heading', {
+        name: /premium outdoor retail deneyimi kategori, urun ve destek rotalarinda ayni netlikle ilerliyor/i,
+      }),
+    ).toBeInTheDocument();
   });
 
-  it('renders the menu route with structured categories and prices', () => {
-    renderApp(['/menu']);
+  it('renders the category route with outdoor collection sections and editorial imagery', () => {
+    renderApp(['/kategoriler']);
 
     expect(
       screen.getByRole('heading', {
-        name: /servisi, vitrin urunlerini ve fiyat bandini ayri bir rota uzerinden sunun/i,
+        name: /teknik katmanlar, ayakkabi ve kamp ekipmanlari ayni premium merchandising diliyle ayrisiyor/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /masaya gelen ana urunler/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /gun boyu donen icecek akisi/i })).toBeInTheDocument();
-    expect(screen.getByText(/narenciyeli ricotta toast/i)).toBeInTheDocument();
-    expect(screen.getByText(/420 TL/i)).toBeInTheDocument();
-  });
-
-  it('renders the reservation route with session and policy content', () => {
-    renderApp(['/rezervasyon']);
-
+    expect(screen.getByRole('heading', { name: /katman, ayakkabi, kamp ve aksesuar zonlari birbirinden net ayriliyor/i })).toBeInTheDocument();
+    expect(screen.getByText(/vibram tabanli botlar/i)).toBeInTheDocument();
+    expect(screen.getByText(/su itici approach modelleri/i)).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: /masa ayirma karari tek hedefte toplansin, ekip ise politikayi acikca gosterebilsin/i,
+        name: /kategori listing sayfasi urun kalitesini gorsel olarak onceden hissettiriyor/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /gun batimi masalari/i })).toBeInTheDocument();
-    expect(
-      screen.getByText(/tum birincil cta butonlari ayni rezervasyon hedefine baglanir/i),
-    ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /^ulasimi gor$/i })).toHaveAttribute(
+  });
+
+  it('renders the product detail route with price, specs, and support links', () => {
+    renderApp(['/urun/zirve-shell-ceket']);
+
+    expect(screen.getByRole('heading', { level: 1, name: /zirve shell ceket/i })).toBeInTheDocument();
+    expect(screen.getByText(/14.900 TL/i)).toBeInTheDocument();
+    expect(screen.getByText(/20K \/ 20K koruma/i)).toBeInTheDocument();
+    expect(screen.getByText(/geri donusumlu ripstop nylon/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /teslimat ve iade politikasini gor/i })).toHaveAttribute(
       'href',
-      '/ziyaret',
+      '/teslimat-iade',
+    );
+    expect(screen.getByRole('link', { name: /beden destegi iste/i })).toHaveAttribute(
+      'href',
+      '/iletisim',
     );
   });
 
-  it('renders the visit route with address, hours, and direct contact options', () => {
-    renderApp(['/ziyaret']);
+  it('renders the about route with values, timeline, and brand imagery', () => {
+    renderApp(['/hakkimizda']);
 
     expect(
       screen.getByRole('heading', {
-        name: /adres, saat ve iletisim bilgisi ayri bir rota ile daha hizli taranir/i,
+        name: /kuzey patika, sehirle dag arasindaki gecis icin tasarlanan premium bir outdoor markasi/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/moda caddesi 18, kadikoy \/ istanbul/i)).toBeInTheDocument();
-    expect(screen.getByText(/cum-cmt \| 08.00 - 23.00/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /yol tarifi ac/i })).toHaveAttribute(
-      'href',
-      'https://maps.google.com/?q=Moda+Caddesi+18+Kadikoy+Istanbul',
-    );
+    expect(screen.getByRole('heading', { name: /kuzey patika premium algisini saha gercegiyle destekliyor/i })).toBeInTheDocument();
+    expect(screen.getByText(/ilgaz ve uludag yuruyuslerinde kullaniliyor/i)).toBeInTheDocument();
+    expect(screen.getByText(/ilk capsule koleksiyon/i)).toBeInTheDocument();
+  });
+
+  it('renders the contact route with showroom and support channels', () => {
+    renderApp(['/iletisim']);
+
     expect(
-      screen.getByRole('link', { name: /dukkani ara \+90 \(212\) 555 04 56/i }),
-    ).toHaveAttribute('href', 'tel:+902125550456');
+      screen.getByRole('heading', {
+        name: /showroom, saha tavsiyesi ve siparis destegi icin net bir temas rotasi/i,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/bomonti showroom randevusu/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /hemen ara \+90 \(850\) 305 76 24/i })).toHaveAttribute(
+      'href',
+      'tel:+908503057624',
+    );
     expect(screen.getByRole('link', { name: /e-posta gonder/i })).toHaveAttribute(
       'href',
-      'mailto:merhaba@harborandhearth.cafe',
+      'mailto:destek@kuzeypatika.com',
     );
+    expect(screen.getByText(/kargo kaynakli beden degisimi yerine showroom degisimi ayni gun yapilabilir/i)).toBeInTheDocument();
+  });
+
+  it('renders the delivery and returns route with shipping, return steps, and FAQs', () => {
+    renderApp(['/teslimat-iade']);
+
     expect(
-      screen.getAllByRole('link', {
-        name: /masa ayirt\s*harbor and hearth rezervasyon akisini yeni sekmede acar/i,
-      })[0],
-    ).toHaveAttribute(
+      screen.getByRole('heading', {
+        name: /hizli sevkiyat, sade iade ve outdoor kullanimina uygun paketleme/i,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        name: /saat 15.00 oncesi siparislerde ayni gun cikis/i,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /talep, paketleme ve sonuc bildirimi uc basit adimda tamamlanir/i })).toBeInTheDocument();
+    expect(screen.getByText(/cumartesi saat 12.00 sonrasinda verilen siparisler/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /destek ekibine yaz/i })).toHaveAttribute(
       'href',
-      'https://reserve.harborandhearth.cafe',
+      '/iletisim',
     );
   });
 });
