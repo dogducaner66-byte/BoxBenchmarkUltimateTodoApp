@@ -3,44 +3,47 @@ import os from 'node:os';
 import path from 'node:path';
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import App from '../../src/App';
 import { bookingTarget } from '../../src/content/cafeContent';
 import { buildSmokeTokens, validateLandingPageBuild } from '../../scripts/verifyLandingPageBuild.mjs';
 
 describe('landing page build and smoke validation', () => {
-  it('renders the core MVP sections with a consistent reservation CTA', () => {
-    render(React.createElement(App));
+  it('renders the storefront home route with a consistent reservation CTA', () => {
+    render(
+      React.createElement(
+        MemoryRouter,
+        { initialEntries: ['/'] },
+        React.createElement(App),
+      ),
+    );
 
     expect(
       screen.getByRole('heading', {
-        name: /menu highlights that make the room feel worth reserving/i,
+        name: /turkce rota yapisi cafe vitrini ile operasyon akisini ayni yerde tutuyor/i,
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: /location, hours, and contact details that remove first-visit friction/i,
+        name: /gunun vitrini ve raf secimi, tekrar kullanilabilir kartlar halinde saklaniyor/i,
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: /give launch-week traffic one booking target and a confident reason to use it/i,
+        name: /tek rezervasyon hedefi hem kullanici hem ekip icin daha temiz bir akisa donusur/i,
       }),
     ).toBeInTheDocument();
 
-    const primaryNavigation = screen.getByRole('navigation', { name: /primary/i });
-    expect(within(primaryNavigation).getByRole('link', { name: /book online/i })).toHaveAttribute(
+    const primaryNavigation = screen.getByRole('navigation', { name: /birincil/i });
+    expect(within(primaryNavigation).getByRole('link', { name: /masa ayirt/i })).toHaveAttribute(
       'href',
       bookingTarget.href,
     );
-    expect(screen.getByRole('link', { name: /reserve a table/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /rezervasyon baslat/i })).toHaveAttribute(
       'href',
       bookingTarget.href,
     );
-    expect(screen.getByRole('link', { name: /start online reservation/i })).toHaveAttribute(
-      'href',
-      bookingTarget.href,
-    );
-    expect(screen.getByRole('link', { name: /book now/i })).toHaveAttribute(
+    expect(screen.getAllByRole('link', { name: /masa ayirt/i })[0]).toHaveAttribute(
       'href',
       bookingTarget.href,
     );
@@ -64,7 +67,7 @@ describe('landing page build and smoke validation', () => {
         path.join(distDirectory, 'index.html'),
         [
           '<!doctype html>',
-          '<html lang="en">',
+          '<html lang="tr">',
           '  <head>',
           '    <link rel="stylesheet" href="/assets/index-test.css" />',
           '  </head>',

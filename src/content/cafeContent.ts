@@ -1,175 +1,299 @@
-export const navigationItems = [
-  { href: '#menu', label: 'Menu' },
-  { href: '#story', label: 'About' },
-  { href: '#visit', label: 'Visit' },
-  { href: '#experience', label: 'Experience' },
+export type NavigationItem = {
+  to: string;
+  label: string;
+  end?: boolean;
+};
+
+export type LinkItem = {
+  href: string;
+  label: string;
+  external?: boolean;
+};
+
+export type CommerceCard = {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  details?: string[];
+  links?: LinkItem[];
+};
+
+export type MenuItem = {
+  name: string;
+  detail: string;
+  price: string;
+};
+
+export type MenuSection = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  items: MenuItem[];
+};
+
+export const brand = {
+  name: 'Harbor & Hearth',
+  tagline: 'Kadikoy sahilinde kahve, firin ve rezervasyon odakli mahalle dukkan deneyimi.',
+  notice: 'Magaza vitrini, menu ve rezervasyon akisi ayni dijital omurgada birlesti.',
+};
+
+export const navigationItems: NavigationItem[] = [
+  { to: '/', label: 'Anasayfa', end: true },
+  { to: '/menu', label: 'Menu' },
+  { to: '/rezervasyon', label: 'Rezervasyon' },
+  { to: '/ziyaret', label: 'Ziyaret' },
 ];
 
 export const bookingTarget = {
   href: 'https://reserve.harborandhearth.cafe',
-  navLabel: 'Book online',
-  heroLabel: 'Reserve a table',
-  showcaseLabel: 'See reservation options',
-  sectionLabel: 'Start online reservation',
-  mobileLabel: 'Book now',
-  title: 'Reserve a table online at Harbor and Hearth. Opens in a new tab.',
+  navLabel: 'Masa ayirt',
+  heroLabel: 'Rezervasyon baslat',
+  showcaseLabel: 'Aksam servisini gor',
+  sectionLabel: 'Masa ayirt',
+  mobileLabel: 'Masa ayirt',
+  title: 'Harbor & Hearth rezervasyon akisini yeni sekmede acar.',
 };
 
 export const heroMedia = {
   mobileSrc: '/hero-scene-mobile.svg',
   desktopSrc: '/hero-scene-desktop.svg',
-  alt: 'Sunlit Harbor and Hearth table with citrus toast, coffee service, and warm window light.',
+  alt: 'Harbor and Hearth masasinda kahvalti tabagi, kahve servisi ve sabah isigi.',
   width: 1280,
   height: 960,
   sizes: '(min-width: 1024px) 28rem, (min-width: 720px) 34vw, 100vw',
 };
 
-export const galleryMedia = [
-  {
-    src: '/gallery-pastry.svg',
-    alt: 'House pastry display with espresso cups and a linen-lined service counter.',
-    eyebrow: 'Launch-day detail',
-    title: 'Pastry counter confidence',
-    description: 'Deferred imagery supports the menu story without competing with the primary reservation path.',
-    width: 960,
-    height: 720,
-  },
-  {
-    src: '/gallery-dining.svg',
-    alt: 'Evening dining room with candlelit tables, layered seating, and guests settling into supper service.',
-    eyebrow: 'Evening atmosphere',
-    title: 'Room feel after dark',
-    description: 'Lazy-loaded ambience visuals help guests picture brunch and supper service while keeping first paint focused.',
-    width: 960,
-    height: 720,
-  },
-];
-
-export const hostStandContact = {
-  href: 'tel:+15550102456',
-  label: 'Call the host stand',
-  value: '(555) 010-2456',
+export const homeHero = {
+  eyebrow: 'Turkce storefront temeli',
+  title: 'Kadikoy sahilinde kahve, kahvalti ve raf urunleri tek route omurgasinda.',
+  description:
+    'Harbor & Hearth artik tek sayfa tanitim yerine; menu, rezervasyon ve ziyaret bilgilerini ayri rotalarda toplayan, ama ayni marka hissini koruyan Turkce bir dukkan vitrini sunuyor.',
+  secondaryHref: '/menu',
+  secondaryLabel: 'Menuyu incele',
+  showcaseLabel: 'Bugunun servisi',
+  showcaseTitle: 'Sabah kahvaltisindan aksam rezervasyonuna kadar ayni sakin ritim.',
+  showcaseDescription:
+    'Vitrin, oturma alani, al-gotur akisi ve paket kahve urunleri birlikte konumlanir; ziyaretci ilk bakista ne satin alabilecegini ve nasil rezervasyon yapacagini anlar.',
+  showcaseDetails: [
+    { label: 'Odak', value: 'Kahvalti tabaklari, tatli vitrini ve kahve cekirdegi paketleri' },
+    { label: 'Servis', value: 'Haftanin 7 gunu masada servis, al-gotur ve rezervasyon' },
+  ],
 };
 
-export const highlights = [
+export const homeMetrics = [
+  { value: '4 rota', label: 'moduler storefront kurgusu' },
+  { value: '12 urun', label: 'gunluk vitrin ve raf secimi' },
+  { value: '1 hedef', label: 'tutarlı rezervasyon cagrisi' },
+];
+
+export const storefrontHighlights: CommerceCard[] = [
   {
-    title: 'Menu cues that feel intentional',
+    eyebrow: 'Vitrin',
+    title: 'Dukkan mantigi tek bakista okunuyor',
     description:
-      'Signature dishes, coffee rituals, and shared plates frame the cafe as polished before guests ever arrive.',
+      'Anasayfa artik bir lansman metni degil; menu, fiziksel ziyaret ve rezervasyon akislari icin yonlendirici bir storefront katmani gibi davranir.',
   },
   {
-    title: 'Trust signals above the fold',
+    eyebrow: 'Route modeli',
+    title: 'Her niyet icin ayri rota var',
     description:
-      'Location, hours, and contact details now sit inside the main scroll path so launch traffic can self-qualify fast.',
+      'Menu arayan, masa ayirtmak isteyen veya adres kontrol eden ziyaretci kendi rotasina ayriliyor; bilgi yogunlugu her sayfada daha saglikli dagitiliyor.',
   },
   {
-    title: 'One booking target everywhere',
+    eyebrow: 'Icerik modeli',
+    title: 'Ticari veriler tekrar kullanilabilir hale geldi',
     description:
-      'Every primary reservation action still points to the same configurable destination, reducing friction and future edits.',
+      'Menu bolumleri, ziyaret kartlari ve rezervasyon maddeleri artik yapisal veri olarak saklaniyor; yeni sayfalar ayni veri modelini kolayca genisletebilir.',
   },
 ];
 
-export const menuCards = [
+export const serviceCards: CommerceCard[] = [
   {
-    title: 'Citrus ricotta toast',
-    detail: 'Whipped ricotta, roasted grapes, pistachio crunch, and wildflower honey on seeded levain.',
-    course: 'Brunch signature',
+    eyebrow: 'Masada servis',
+    title: 'Kahvalti ve ogle arasi sakin masa akisi',
+    description:
+      'Penceredeki uzun masa, iki kisilik kose masalari ve prizli calisma noktasi gunluk ziyareti rahatlatir.',
+    details: ['Hafta ici 08.00 itibariyle filtre ve kahvalti servisi', 'Laptop dostu sessiz bolge', 'Rezervasyona uygun gun batimi seanslari'],
   },
   {
-    title: 'Midnight roast flight',
-    detail: 'Espresso, flash-brew tonic, and our maple oat cortado highlight the bar program in one order.',
-    course: 'Coffee ritual',
+    eyebrow: 'Al-gotur',
+    title: 'Ofise donen misafir icin hizli pickup',
+    description:
+      'Kasadaki hazir urun sirasi ve kahve bekleme suresi tek kartta anlatilir; yogun saatlerde bile satin alma karari kolaylasir.',
+    details: ['On hazir sandvic ve tatli vitrini', '8 dakikada hazir icecek hedefi', 'Kurye teslimina uygun paketleme'],
   },
   {
-    title: 'Harbor supper board',
-    detail: 'Shared cheeses, marinated olives, blistered flatbread, and market crudites for easy golden-hour tables.',
-    course: 'Evening table',
+    eyebrow: 'Raf urunleri',
+    title: 'Dukkan deneyimi paket kahve ve ev urunlerine tasiniyor',
+    description:
+      'Cekirdek kahve, granola ve seramik kupa secimi; cafe markasini kucuk bir perakende deneyimine donusturur.',
+    details: ['250 g gunluk kavrum paketleri', 'Evde demleme rehberi kartlari', 'Sinirli sayida masaustu seramik seri'],
   },
 ];
 
-export const aboutSection = {
-  intro:
-    'Harbor & Hearth was shaped for first visits that turn into repeat rituals: a sunlit room in the morning, an easy midday perch, and a candlelit close that still feels like the same neighborhood cafe.',
-  noteLabel: 'Why guests trust it fast',
-  note:
-    'The page pairs atmosphere with practical details so launch-week visitors can picture the room, confirm the basics, and reserve without leaving the scroll.',
+export const collectionCards: CommerceCard[] = [
+  {
+    eyebrow: 'Sabah vitrini',
+    title: 'Firin tezgahi',
+    description: 'Cruffin, focaccia ve mevsim recelli buns gunun ilk trafigini tasir.',
+    details: ['Tahinli cruffin', 'Eski kasarli focaccia', 'Portakal recelli sabah bun'],
+  },
+  {
+    eyebrow: 'Kahve bar',
+    title: 'Imza icecekler',
+    description: 'Filtre kahve, narenciye tonic ve maple oat cortado ana siparis omurgasini kurar.',
+    details: ['Single origin V60', 'Narenciye espresso tonic', 'Maple oat cortado'],
+  },
+  {
+    eyebrow: 'Raf secimi',
+    title: 'Eve tasinan urunler',
+    description: 'Paket cekirdek, granola ve seramik kupa secimi kasadan cikarken sepeti buyutur.',
+    details: ['Etiyopya filtre paketleri', 'Ev yapimi badem granola', 'Mat glaze kupa serisi'],
+  },
+];
+
+export const menuPageIntro = {
+  eyebrow: 'Menu rotasi',
+  title: 'Servisi, vitrin urunlerini ve fiyat bandini ayri bir rota uzerinden sunun.',
+  description:
+    'Bu sayfa kahvalti masasi, kahve bari ve raf urunlerini birbirinden ayirir; ekip yeni kategori eklemek istediginde ayni veri seklini kullanabilir.',
 };
 
-export const aboutMoments = [
+export const menuSections: MenuSection[] = [
   {
-    title: 'Open-kitchen warmth',
-    description: 'Pastry finishes, ceramic cups, and visible prep create an immediate sense of care from the door.',
+    eyebrow: 'Kahvalti tabaklari',
+    title: 'Masaya gelen ana urunler',
+    description: 'Uzun brunch oturumlarinda siparis kararini hizlandiran cekirdek tabaklar.',
+    items: [
+      { name: 'Narenciyeli ricotta toast', detail: 'Cekirdek ekmek, cirpilmis ricotta, kizarmis uzum ve bal.', price: '360 TL' },
+      { name: 'Yumusak yumurtali focaccia', detail: 'Karamel sogan, taze otlar ve eski kasar ile servis edilir.', price: '410 TL' },
+      { name: 'Sahil granola kasesi', detail: 'Ev yapimi granola, suzme yogurt ve mevsim meyvesi.', price: '295 TL' },
+    ],
   },
   {
-    title: 'Layered seating',
-    description: 'Window banquettes, communal tables, and quieter corners support solo coffee, catch-ups, and date nights.',
+    eyebrow: 'Kahve bari',
+    title: 'Gun boyu donen icecek akisi',
+    description: 'Bar tarafinda en hizli karar verilen ve tekrar siparis uretilen icecekler.',
+    items: [
+      { name: 'Maple oat cortado', detail: 'Yumusak icim espresso, yulaf sut ve akcaagac dokunusu.', price: '180 TL' },
+      { name: 'Narenciye espresso tonic', detail: 'Portakal kabugu ve tonik ile soguk servis.', price: '205 TL' },
+      { name: 'Tek ciftlik V60', detail: 'Haftalik kavrum secimiyle hazirlanan filtre servis.', price: '195 TL' },
+    ],
   },
   {
-    title: 'Evening glow',
-    description: 'As daylight fades, low lamps and small plates shift the room into a relaxed supper mood without changing the brand voice.',
+    eyebrow: 'Raf ve paket',
+    title: 'Kasada buyuyen sepet',
+    description: 'Ziyaret sonu ek satin alim yaratan paket urunler ve kucuk hediyelikler.',
+    items: [
+      { name: '250 g gunluk kavrum', detail: 'Evde filtre ya da espresso icin iki farkli cekirdek profili.', price: '420 TL' },
+      { name: 'Bademli granola kavanozu', detail: 'Kahvalti ve ara ogun icin dukkan imzali cam kavanoz.', price: '240 TL' },
+      { name: 'Mat glaze kupa', detail: 'Sadece magazada satilan kisitli seramik seri.', price: '520 TL' },
+    ],
   },
 ];
 
-export const experienceMoments = [
-  {
-    title: 'Morning light',
-    description: 'Fast espresso service and pastry-ready counters keep weekday drop-ins smooth before the commute starts.',
-  },
-  {
-    title: 'Midday reset',
-    description: 'Reliable Wi-Fi, well-spaced tables, and all-day food make the room easy for laptop lunches and client coffees.',
-  },
-  {
-    title: 'Golden hour',
-    description: 'Reservations flow into shared plates and softer lighting, giving first-time guests a clear reason to book ahead.',
-  },
-];
+export const reservationPageIntro = {
+  eyebrow: 'Rezervasyon rotasi',
+  title: 'Masa ayirma karari tek hedefte toplansin, ekip ise politikayi acikca gosterebilsin.',
+  description:
+    'Rezervasyon sayfasi; seans saatlerini, grup limitlerini ve iletisim yedegini tek yerde anlatir. Bu sayede ziyaretci ekrana bakarak karar verir, ekip telefonla ayni bilgiyi tekrar etmek zorunda kalmaz.',
+};
 
-export const visitCards = [
+export const reservationMoments: CommerceCard[] = [
   {
-    eyebrow: 'Location',
-    title: 'Find us on the Old Harbor waterfront',
-    description:
-      'Two blocks from the ferry promenade, Harbor & Hearth is easy to spot for locals, hotel guests, and destination brunch plans.',
-    details: [
-      '22 Harbor Lane, Seabrook, CA 90210',
-      'Three minutes from Harbor Garage and the waterfront path',
-      'Ground-floor entry with stroller- and wheelchair-friendly access',
-    ],
-    links: [{ href: 'https://maps.google.com/?q=22+Harbor+Lane+Seabrook+CA+90210', label: 'Open walking directions' }],
+    eyebrow: 'Aksam seansi',
+    title: 'Gun batimi masalari',
+    description: 'Iki ila dort kisilik rezervasyonlar gun batimindan kapanisa kadar aciktir.',
+    details: ['17.30, 19.00 ve 20.30 giris saatleri', 'Cam kenari ve sakin kose talepleri not alanina eklenir'],
   },
   {
-    eyebrow: 'Hours',
-    title: 'Open when brunch, meetings, and supper overlap',
-    description:
-      'Clear service windows help first-time guests book with confidence and know when walk-ins still make sense.',
-    details: ['Mon-Thu | 8:00 AM - 9:00 PM', 'Fri-Sat | 8:00 AM - 10:00 PM', 'Sun | 8:00 AM - 8:00 PM'],
+    eyebrow: 'Hafta sonu',
+    title: 'Brunch yogunlugu',
+    description: 'Cumartesi ve pazar sabahlarinda rezervasyonlu masa akisi kuyruk bekleme ihtiyacini azaltir.',
+    details: ['10.00 oncesi walk-in icin ayrilan masa payi', '90 dakikalik standart brunch seansi'],
   },
   {
-    eyebrow: 'Contact',
-    title: 'Reach the team without hunting for details',
-    description:
-      'Questions about reservations, accessibility, or small gatherings can be handled before arrival.',
-    details: [
-      `Host stand | ${hostStandContact.value}`,
-      'Cafe team | hello@harborandhearth.cafe',
-      'Gatherings for up to 18 guests available by request',
-    ],
-    links: [
-      { href: hostStandContact.href, label: `Call ${hostStandContact.value}` },
-      { href: 'mailto:hello@harborandhearth.cafe', label: 'Email the cafe team' },
-    ],
+    eyebrow: 'Kucuk bulusmalar',
+    title: 'Ekip kahvesi ve mini kutlamalar',
+    description: 'Alti ile sekiz kisilik gruplar icin on siparis ve masa birlestirme notlari ayrica iletilir.',
+    details: ['Tatli ve kahve on siparisi eklenebilir', 'Grup rezervasyonlari icin ayni gun teyit aranir'],
   },
 ];
 
 export const reservationDetails = [
-  'One configurable booking target powers the hero, navigation, and dedicated reservation section.',
-  'Location, hours, and contact details now reinforce the booking decision without sending guests to another page.',
-  'Mobile guests keep a one-tap reservation shortcut with the same accessible booking destination.',
+  'Tum birincil CTA butonlari ayni rezervasyon hedefine baglanir; route degisse bile davranis sabit kalir.',
+  'Telefon destegi, son dakika degisiklikleri ve erisim talepleri icin yedek kanal olarak korunur.',
+  'Politika maddeleri Turkce ve kisa tutuldugu icin ilk ziyaret oncesi karar verme suresi kisalir.',
 ];
 
-export const reservationMoments = [
-  { label: 'Best for', value: 'Brunch dates, laptop lunches, and golden-hour suppers' },
-  { label: 'Confirmation', value: 'Instant booking flow with live party size and timing selection' },
-  { label: 'Walk-in backup', value: 'Host stand support stays available for same-day changes' },
+export const reservationBenefits: CommerceCard[] = [
+  {
+    eyebrow: 'Netlik',
+    title: 'Tek hedef, daha az tereddut',
+    description: 'Header, anasayfa, rezervasyon sayfasi ve mobil bar ayni aksiyona cikar.',
+  },
+  {
+    eyebrow: 'Operasyon',
+    title: 'Ekibin anlattigi bilgiler sayfada hazir',
+    description: 'Seans saatleri, grup kurallari ve iletisim secenekleri bir aradadir.',
+  },
+  {
+    eyebrow: 'Gelecek hazirligi',
+    title: 'Yeni rezervasyon saglayicisi tek noktadan degistirilebilir',
+    description: 'Rezervasyon linki veri katmaninda tanimli oldugu icin yeni saglayiciya gecis kolaydir.',
+  },
+];
+
+export const visitPageIntro = {
+  eyebrow: 'Ziyaret rotasi',
+  title: 'Adres, saat ve iletisim bilgisi ayri bir rota ile daha hizli taranir.',
+  description:
+    'Ziyaret sayfasi; ilk kez gelen misafir, kurye ve rezervasyonlu grup icin ayni anda calisir. Harita, saat ve iletisim bilgileri kart yapisinda okuması kolay sekilde sunulur.',
+};
+
+export const hostStandContact = {
+  href: 'tel:+902125550456',
+  label: 'Dukkani ara',
+  value: '+90 (212) 555 04 56',
+};
+
+export const visitCards: CommerceCard[] = [
+  {
+    eyebrow: 'Adres',
+    title: 'Moda Caddesi 18, Kadikoy / Istanbul',
+    description: 'Iskelenin iki sokak gerisinde, sabah yuruyusu ve aksam yemegi trafiginin ortasinda.',
+    details: ['Bahariye ve Moda hattina yuruyus mesafesi', 'Zemin giris ve bebek arabasi icin uygun gecis', 'Bisiklet park noktasi kapinin yaninda'],
+    links: [{ href: 'https://maps.google.com/?q=Moda+Caddesi+18+Kadikoy+Istanbul', label: 'Yol tarifi ac', external: true }],
+  },
+  {
+    eyebrow: 'Saatler',
+    title: 'Hafta ici kahvaltidan gece servisine',
+    description: 'Yaya trafiginin zirve yaptigi saatler ve rezervasyon araliklari birlikte dusunuldu.',
+    details: ['Pzt-Per | 08.00 - 22.00', 'Cum-Cmt | 08.00 - 23.00', 'Paz | 09.00 - 21.00'],
+  },
+  {
+    eyebrow: 'Iletisim',
+    title: 'Rezervasyon disi sorular icin hizli temas',
+    description: 'Erisilebilirlik, kurye teslimi ve grup planlamasi icin iki farkli kanal hazir.',
+    details: [`Telefon | ${hostStandContact.value}`, 'E-posta | merhaba@harborandhearth.cafe', 'Kurye pickup penceresi | 11.00 - 16.00'],
+    links: [
+      { href: hostStandContact.href, label: `${hostStandContact.label} ${hostStandContact.value}` },
+      { href: 'mailto:merhaba@harborandhearth.cafe', label: 'E-posta gonder' },
+    ],
+  },
+];
+
+export const footerColumns = [
+  {
+    title: 'Storefront rotalari',
+    items: ['Anasayfa vitrini', 'Menu rotasi', 'Rezervasyon merkezi', 'Ziyaret bilgileri'],
+  },
+  {
+    title: 'Ticari icerik',
+    items: ['Kahvalti tabaklari', 'Kahve bari', 'Raf urunleri', 'Pickup ve grup notlari'],
+  },
+  {
+    title: 'Operasyon',
+    items: ['Tek rezervasyon hedefi', 'Moduler veri yapisi', 'Turkce navigasyon', 'Mobil hizli CTA'],
+  },
 ];
