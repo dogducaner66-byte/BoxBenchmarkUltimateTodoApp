@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "setup:clean": "npm ci",
-    "validate:landing-page": "npm run build && node scripts/verifyLandingPageBuild.mjs && npm test -- tests/core/landing-page-validation.test.ts"
+    "validate:storefront": "npm run build && node scripts/verifyLandingPageBuild.mjs && npm test -- tests/core/rewrite_the_current_cafe_focused_tests_and_build_smoke_validator.test.ts"
   },
   "dependencies": {
     "react": "^19.2.5",
