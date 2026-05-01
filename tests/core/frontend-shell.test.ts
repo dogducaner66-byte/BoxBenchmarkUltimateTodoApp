@@ -60,7 +60,22 @@ describe('outdoor storefront shell', () => {
       screen.getByRole('img', {
         name: /yuksek rakimda teknik katmanlariyla yuruyen outdoor ekip/i,
       }),
+    ).toHaveAttribute('src', '/media/hero/outdoor-hero.jpg');
+    expect(
+      screen.getByRole('img', {
+        name: /yuksek rakimda teknik katmanlariyla yuruyen outdoor ekip/i,
+      }),
     ).toHaveAttribute('loading', 'eager');
+    expect(
+      screen.getByRole('img', {
+        name: /yuksek rakimda teknik katmanlariyla yuruyen outdoor ekip/i,
+      }),
+    ).toHaveAttribute('width', '1800');
+    expect(
+      screen.getByRole('img', {
+        name: /yuksek rakimda teknik katmanlariyla yuruyen outdoor ekip/i,
+      }),
+    ).toHaveAttribute('height', '1200');
     expect(
       screen.getByRole('heading', {
         name: /premium outdoor retail deneyimi kategori, urun ve destek rotalarinda ayni netlikle ilerliyor/i,
@@ -93,6 +108,11 @@ describe('outdoor storefront shell', () => {
     expect(screen.getByText(/14.900 TL/i)).toBeInTheDocument();
     expect(screen.getByText(/20K \/ 20K koruma/i)).toBeInTheDocument();
     expect(screen.getByText(/geri donusumlu ripstop nylon/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', {
+        name: /teknik shell ceketin premium malzeme ve siluet detayini gosteren urun fotografi/i,
+      }),
+    ).toHaveAttribute('src', '/media/products/zirve-shell-ceket.jpg');
     expect(screen.getByRole('link', { name: /teslimat ve iade politikasini gor/i })).toHaveAttribute(
       'href',
       '/teslimat-iade',
@@ -150,6 +170,11 @@ describe('outdoor storefront shell', () => {
       }),
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /talep, paketleme ve sonuc bildirimi uc basit adimda tamamlanir/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', {
+        name: /teslimata hazir premium outdoor ekipman duygusunu tasiyan fotograf/i,
+      }),
+    ).toHaveAttribute('src', '/media/editorial/delivery-field.jpg');
     expect(screen.getByText(/cumartesi saat 12.00 sonrasinda verilen siparisler/i)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /destek ekibine yaz/i })).toHaveAttribute(
       'href',

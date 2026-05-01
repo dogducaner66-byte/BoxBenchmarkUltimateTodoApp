@@ -4,6 +4,7 @@ import { ContentSection } from '../components/layout/ContentSection';
 import { InfoCardGrid } from '../components/layout/InfoCardGrid';
 import { PageHero } from '../components/layout/PageHero';
 import { SpecList } from '../components/layout/SpecList';
+import { StorefrontImage } from '../components/layout/StorefrontImage';
 import { featuredProductSlug, findProductBySlug } from '../content/cafeContent';
 
 export function ProductPage() {
@@ -29,9 +30,7 @@ export function ProductPage() {
         }
         aside={
           <aside className="showcase-card purchase-card" aria-label="Urun satin alma ozeti">
-            <picture className="showcase-card__media">
-              <img alt={product.heroImageAlt} decoding="async" fetchPriority="high" loading="eager" src={product.heroImageSrc} />
-            </picture>
+            <StorefrontImage asset={product.heroImage} className="showcase-card__media" />
             <span className="showcase-card__label">{product.eyebrow}</span>
             <h2>{product.name}</h2>
             <p>{product.summary}</p>

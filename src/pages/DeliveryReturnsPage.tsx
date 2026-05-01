@@ -9,6 +9,7 @@ import {
   deliveryPageIntro,
   featuredProductSlug,
   returnSteps,
+  storefrontMedia,
 } from '../content/cafeContent';
 
 const deliveryStoryMedia = [
@@ -17,8 +18,10 @@ const deliveryStoryMedia = [
     title: 'Paketleme ve rota hazirligi ayni premium hisle gosteriliyor',
     description:
       'Teslimat sayfasi da editorial olarak ele alindiginda urun deneyiminin yalnizca sepete kadar surmedigi anlasilir.',
-    imageSrc: '/delivery-field.jpg',
-    imageAlt: 'Teslimata hazir premium outdoor ekipman duygusunu tasiyan fotograf.',
+    image: {
+      ...storefrontMedia.deliveryField,
+      alt: 'Teslimata hazir premium outdoor ekipman duygusunu tasiyan fotograf.',
+    },
   },
 ];
 

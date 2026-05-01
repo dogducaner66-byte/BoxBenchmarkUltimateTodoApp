@@ -22,8 +22,17 @@ export type EditorialMediaItem = {
   eyebrow: string;
   title: string;
   description: string;
-  imageSrc: string;
-  imageAlt: string;
+  image: StorefrontImageAsset;
+};
+
+export type StorefrontImageAsset = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  loading?: 'eager' | 'lazy';
+  fetchPriority?: 'auto' | 'high' | 'low';
+  objectPosition?: string;
 };
 
 export type ProductSpec = {
@@ -39,8 +48,7 @@ export type Product = {
   description: string;
   summary: string;
   availability: string;
-  heroImageSrc: string;
-  heroImageAlt: string;
+  heroImage: StorefrontImageAsset;
   badges: string[];
   specs: ProductSpec[];
   featureCards: CommerceCard[];
@@ -74,10 +82,54 @@ export const primaryAction = {
 
 export const featuredProductSlug = 'zirve-shell-ceket';
 
-export const heroMedia = {
-  src: '/outdoor-hero.jpg',
-  alt: 'Yuksek rakimda teknik katmanlariyla yuruyen outdoor ekip.',
+export const storefrontMedia = {
+  socialPreview: {
+    src: '/media/social/kuzey-patika-storefront-og.jpg',
+    alt: 'Kuzey Patika teknik outdoor koleksiyonunu gercek fotografla gosteren sosyal paylasim gorseli.',
+    width: 1200,
+    height: 630,
+  },
+  hero: {
+    src: '/media/hero/outdoor-hero.jpg',
+    alt: 'Yuksek rakimda teknik katmanlariyla yuruyen outdoor ekip.',
+    width: 1800,
+    height: 1200,
+    loading: 'eager' as const,
+    fetchPriority: 'high' as const,
+    objectPosition: 'center 42%',
+  },
+  categoryLayers: {
+    src: '/media/editorial/category-layers.jpg',
+    alt: 'Premium outdoor katmanini yakin planda gosteren editorial cekim.',
+    width: 1600,
+    height: 1156,
+    objectPosition: 'center 36%',
+  },
+  deliveryField: {
+    src: '/media/editorial/delivery-field.jpg',
+    alt: 'Doga manzarasi esliginde saha ekipmani ve rotaya hazir paket.',
+    width: 1600,
+    height: 2400,
+    objectPosition: 'center 35%',
+  },
+  brandStory: {
+    src: '/media/editorial/brand-story.jpg',
+    alt: 'Outdoor marka hikayesine uygun saha ve ekip anlatimi fotografi.',
+    width: 1600,
+    height: 1104,
+  },
+  productShell: {
+    src: '/media/products/zirve-shell-ceket.jpg',
+    alt: 'Teknik shell ceketin premium malzeme ve siluet detayini gosteren urun fotografi.',
+    width: 1600,
+    height: 1067,
+    loading: 'eager' as const,
+    fetchPriority: 'high' as const,
+    objectPosition: 'center 28%',
+  },
 };
+
+export const heroMedia = storefrontMedia.hero;
 
 export const homeHero = {
   eyebrow: 'Premium outdoor storefront',
@@ -161,24 +213,24 @@ export const homeEditorialMedia: EditorialMediaItem[] = [
     title: 'Yeni sezon lansmani gercek rota fotografi ile aciliyor',
     description:
       'Premium dis mekan hissi soyut cizimler yerine gercek dag ve yuruyus fotografi uzerinden kuruluyor.',
-    imageSrc: '/outdoor-hero.jpg',
-    imageAlt: 'Dag yamacinda yuruyen teknik giyim ekibi.',
+    image: {
+      ...storefrontMedia.hero,
+      alt: 'Dag yamacinda yuruyen teknik giyim ekibi.',
+    },
   },
   {
     eyebrow: 'Kategori vitrini',
     title: 'Katman kategorisi editorial crop ile daha pahali hissettiriyor',
     description:
       'Kategori sayfasindaki gorsel blok, malzeme ve silueti yakin planda gosteren moda-editoryal bir kesit olarak kullaniliyor.',
-    imageSrc: '/category-layers.jpg',
-    imageAlt: 'Premium outdoor katmanini yakin planda gosteren editorial cekim.',
+    image: storefrontMedia.categoryLayers,
   },
   {
     eyebrow: 'Lojistik duygusu',
     title: 'Teslimat ve iade rotasi da ayni gorsel sistemde kaliyor',
     description:
       'Operasyon sayfalari sadece metin degil; sahaya cikmaya hazir paketleme hissiyle urun guvenini destekliyor.',
-    imageSrc: '/delivery-field.jpg',
-    imageAlt: 'Doga manzarasi esliginde saha ekipmani ve rotaya hazir paket.',
+    image: storefrontMedia.deliveryField,
   },
 ];
 
@@ -216,16 +268,20 @@ export const categoryEditorialMedia: EditorialMediaItem[] = [
     title: 'Yakin plan malzeme hissi satin alma kararini destekliyor',
     description:
       'Dis kumasin dokusu, fermuar kalitesi ve fit hissi gorsel hikayede ilk siraya alininca premium algi daha dogrudan kurulur.',
-    imageSrc: '/product-shell.jpg',
-    imageAlt: 'Teknik shell ceket kumasini ve dikis detayini gosteren urun cekimi.',
+    image: {
+      ...storefrontMedia.productShell,
+      alt: 'Teknik shell ceket kumasini ve dikis detayini gosteren urun cekimi.',
+    },
   },
   {
     eyebrow: 'Alan kullanimi',
     title: 'Kategori bloklari field use notlariyla esleniyor',
     description:
       'Her kategori yalnizca urun listesi degil; sabah cikisi, kamp kurulumu veya gunluk sehir rotasi gibi kullanim anlariyla okunuyor.',
-    imageSrc: '/delivery-field.jpg',
-    imageAlt: 'Acik arazide premium ekipman kullanimina dair editorial sahne.',
+    image: {
+      ...storefrontMedia.deliveryField,
+      alt: 'Acik arazide premium ekipman kullanimina dair editorial sahne.',
+    },
   },
 ];
 
@@ -284,16 +340,17 @@ export const aboutEditorialMedia: EditorialMediaItem[] = [
     title: 'Marka, saha notlariyla desteklenen bir tasarim masasi etrafinda buyuyor',
     description:
       'Gorseller atolyeden ziyade sahaya cikan, malzemeyi dogada gosteren bir dille seciliyor.',
-    imageSrc: '/brand-story.jpg',
-    imageAlt: 'Outdoor marka hikayesine uygun saha ve ekip anlatimi fotografi.',
+    image: storefrontMedia.brandStory,
   },
   {
     eyebrow: 'Gecis alanlari',
     title: 'Sehir kullanimi ve hafta sonu kampi tek hikayede bulusuyor',
     description:
       'Koleksiyonlar yalnizca yuksek irtifa icin degil; hafta ici sehir ritmini de premium bir katman hissiyle tasiyor.',
-    imageSrc: '/outdoor-hero.jpg',
-    imageAlt: 'Sehirden dogaya uzanan premium outdoor atmosferi.',
+    image: {
+      ...storefrontMedia.hero,
+      alt: 'Sehirden dogaya uzanan premium outdoor atmosferi.',
+    },
   },
 ];
 
@@ -424,8 +481,7 @@ export const products: Product[] = [
     summary:
       'Geri donusumlu ripstop dis yuzey, 20K / 20K membran ve kask uyumlu baslik ile tasarlanan Zirve Shell Ceket; hafiflik ile korumayi ayni siluette dengeler.',
     availability: 'Stokta ve ayni gun cikisa uygun',
-    heroImageSrc: '/product-shell.jpg',
-    heroImageAlt: 'Teknik shell ceketin premium malzeme ve siluet detayini gosteren urun fotografi.',
+    heroImage: storefrontMedia.productShell,
     badges: ['3 katmanli membran', '20K / 20K koruma', 'Unisex teknik fit'],
     specs: [
       { label: 'Kumas', value: 'Geri donusumlu ripstop nylon' },
@@ -461,24 +517,30 @@ export const products: Product[] = [
         title: 'Yakin plan doku ve su korumasi',
         description:
           'Premium dikis duzeni, fermuar parcasi ve yuzey dokusu urunun fiyat segmentini dogru yansitir.',
-        imageSrc: '/product-shell.jpg',
-        imageAlt: 'Shell ceketin malzeme ve su koruma hissini gosteren yakin plan.',
+        image: {
+          ...storefrontMedia.productShell,
+          alt: 'Shell ceketin malzeme ve su koruma hissini gosteren yakin plan.',
+        },
       },
       {
         eyebrow: 'Kullanim ani',
         title: 'Gercek rota sahnesinde siluet',
         description:
           'Urun yalnizca studio cekimiyle degil, arazi icindeki durusuyla da ikna eder.',
-        imageSrc: '/outdoor-hero.jpg',
-        imageAlt: 'Dag yamacinda shell ceket ile yuruyen outdoor ekip.',
+        image: {
+          ...storefrontMedia.hero,
+          alt: 'Dag yamacinda shell ceket ile yuruyen outdoor ekip.',
+        },
       },
       {
         eyebrow: 'Stil dengesi',
         title: 'Sehir ile saha arasinda premium bir gecis',
         description:
           'Ceketin kesimi ve renk bloklamasi, teknik fonksiyonu korurken gunluk kullanimda da rafine gorunur.',
-        imageSrc: '/category-layers.jpg',
-        imageAlt: 'Premium outdoor katmanin sehir ve saha arasindaki gecisini gosteren editorial kare.',
+        image: {
+          ...storefrontMedia.categoryLayers,
+          alt: 'Premium outdoor katmanin sehir ve saha arasindaki gecisini gosteren editorial kare.',
+        },
       },
     ],
     careNotes: [
