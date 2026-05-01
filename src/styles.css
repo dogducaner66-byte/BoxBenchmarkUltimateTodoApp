@@ -71,6 +71,16 @@ a:hover {
   padding: 0.75rem 0 var(--space-2xl);
 }
 
+.site-shell {
+  padding-bottom: calc(var(--space-2xl) + 5rem);
+}
+
+.page-stack {
+  display: grid;
+  gap: var(--space-md);
+  padding-top: 0;
+}
+
 .hero-section {
   position: relative;
   overflow: hidden;
@@ -120,6 +130,24 @@ a:hover {
   text-transform: uppercase;
 }
 
+.brand-copy {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 28rem;
+}
+
+.site-header {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.site-header__meta {
+  display: grid;
+  gap: 0.45rem;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .nav-list {
   gap: var(--space-xs);
   padding: 0;
@@ -138,6 +166,12 @@ a:hover {
   border: 1px solid var(--color-border);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-list a.active {
+  color: #1f120f;
+  border-color: transparent;
+  background: var(--color-accent);
 }
 
 .nav-list__cta {
@@ -332,6 +366,18 @@ dd {
   margin-top: var(--space-md);
 }
 
+.route-hero,
+.route-hero__content,
+.route-hero__aside,
+.footer-shell {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.route-hero__content {
+  align-content: start;
+}
+
 .split-layout,
 .card-grid {
   gap: var(--space-md);
@@ -378,7 +424,8 @@ dd {
 .link-list,
 .media-grid,
 .media-card,
-.media-card figcaption {
+.media-card figcaption,
+.footer-shell {
   display: grid;
 }
 
@@ -493,6 +540,10 @@ dd {
     rgba(17, 10, 9, 0.68);
 }
 
+.footer-shell {
+  margin-bottom: 0;
+}
+
 .mobile-booking-bar {
   position: sticky;
   bottom: 0.75rem;
@@ -540,7 +591,8 @@ dd {
 
   .hero-layout,
   .split-layout,
-  .reservation-panel__layout {
+  .reservation-panel__layout,
+  .route-hero {
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
     align-items: start;
@@ -608,6 +660,10 @@ dd {
   .hero-layout {
     grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.85fr);
     gap: var(--space-lg);
+  }
+
+   .route-hero {
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
   }
 
   .split-layout {

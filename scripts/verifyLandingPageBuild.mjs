@@ -3,10 +3,10 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 export const buildSmokeTokens = [
-  'Menu highlights that make the room feel worth reserving.',
-  'Location, hours, and contact details that remove first-visit friction.',
-  'Give launch-week traffic one booking target and a confident reason to use it.',
-  'Reserve a table',
+  'Kadikoy sahilinde kahve, kahvalti ve raf urunleri tek route omurgasinda.',
+  'Turkce rota yapisi cafe vitrini ile operasyon akisini ayni yerde tutuyor.',
+  'Tek rezervasyon hedefi hem kullanici hem ekip icin daha temiz bir akisa donusur.',
+  'Masa ayirt',
   'https://reserve.harborandhearth.cafe',
 ];
 
