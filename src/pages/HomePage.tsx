@@ -3,6 +3,7 @@ import { EditorialMediaGrid } from '../components/layout/EditorialMediaGrid';
 import { ContentSection } from '../components/layout/ContentSection';
 import { InfoCardGrid } from '../components/layout/InfoCardGrid';
 import { PageHero } from '../components/layout/PageHero';
+import { StorefrontImage } from '../components/layout/StorefrontImage';
 import {
   categoryCards,
   featuredProductSlug,
@@ -31,9 +32,7 @@ export function HomePage() {
         }
         aside={
           <aside className="showcase-card" aria-label="One cikan urun sahnesi">
-            <picture className="showcase-card__media">
-              <img alt={heroMedia.alt} decoding="async" fetchPriority="high" loading="eager" src={heroMedia.src} />
-            </picture>
+            <StorefrontImage asset={heroMedia} className="showcase-card__media" />
             <span className="showcase-card__label">{homeHero.showcaseLabel}</span>
             <h2>{homeHero.showcaseTitle}</h2>
             <p>{homeHero.showcaseDescription}</p>
