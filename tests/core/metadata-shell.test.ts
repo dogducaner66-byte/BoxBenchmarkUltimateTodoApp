@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-describe('landing page metadata shell', () => {
+describe('turkish outdoor storefront metadata shell', () => {
   it('ships crawlable metadata, social preview tags, and store schema in index.html', () => {
     const indexHtml = readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
 
